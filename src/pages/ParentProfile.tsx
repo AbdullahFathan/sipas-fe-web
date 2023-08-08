@@ -10,7 +10,7 @@ const ParentProfile = () => {
   };
 
   return (
-    <section className="ml-[60px] mt-[35px] mr-[102px]">
+    <section className="ml-[60px] mt-[35px] mr-[102px] w-full">
       {/* Heading Page */}
       <div>
         <h1 className="font-semibold text-2xl">Profil Orang Tua</h1>
