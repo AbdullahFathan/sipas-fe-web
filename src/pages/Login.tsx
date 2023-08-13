@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface FormUser {
   email: string;
@@ -6,6 +7,7 @@ interface FormUser {
 }
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formUser, setFormUser] = useState<FormUser>({
     email: "",
     password: "",
@@ -23,6 +25,8 @@ const Login = () => {
     event.preventDefault();
     // Here you can perform your login logic using formUser.email and formUser.password
     console.log("Logging in with:", formUser.email, formUser.password);
+
+    navigate("/homePage");
   };
 
   return (

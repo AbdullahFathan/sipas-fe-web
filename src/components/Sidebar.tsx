@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <aside
       id="logo-sidebar"
-      className=" z-40 w-64 ml-[100px] h-screen  bg-neutral-white"
+      className=" z-40 w-64 ml-[100px] h-screen left-0  bg-neutral-white"
       aria-label="Sidebar"
     >
       <div className="h-full px-3 pb-4 overflow-y-autobg-neutral-white">
@@ -21,34 +21,34 @@ const Sidebar = () => {
             </a>
           </li>
           <li>
-            <Link
+            <NavLink
               to={"/addData"}
               className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
             >
               <span className="flex-1 ml-3 whitespace-nowrap">
                 Data Pemeriksaan
               </span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to={"/waGruop"}
               className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange   "
             >
               <span className="flex-1 ml-3 whitespace-nowrap">
                 Link Grup Wa
               </span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to={"/resepMakanan"}
               className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
             >
               <span className="flex-1 ml-3 whitespace-nowrap">
                 Resep Makanan
               </span>
-            </Link>
+            </NavLink>
           </li>
           <li>
             <a
