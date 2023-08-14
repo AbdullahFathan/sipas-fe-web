@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <aside
       id="logo-sidebar"
-      className=" z-40 w-64 ml-[100px] h-screen left-0  bg-neutral-white"
+      className=" z-40 w-64 ml-[100px] h-min mt-8 left-0 hidden md:flex  bg-neutral-white"
       aria-label="Sidebar"
     >
       <div className="h-full px-3 pb-4 overflow-y-autobg-neutral-white">
@@ -17,7 +17,7 @@ const Sidebar = () => {
             <li key={item.id}>
               <NavLink
                 to={item.path}
-                className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
+                className="flex items-center font-semibold p-2 text-gray-900 hover:text-white hover:bg-orange "
               >
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   {item.title}

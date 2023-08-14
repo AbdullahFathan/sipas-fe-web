@@ -27,7 +27,7 @@ const AddPrenagcyData = () => {
           Tambahkan Data Kehamilan
         </button>
 
-        <div className="flex justify-between flex-row w-[60%] h-[70px] my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
+        <div className="flex justify-between flex-row md:w-[60%]  my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
           <div className="flex flex-col">
             <h2 className="font-semibold ">Pemeriksaan - 3</h2>
             <h4>
@@ -39,7 +39,7 @@ const AddPrenagcyData = () => {
           </Link>
         </div>
 
-        <div className="flex justify-between flex-row w-[60%] h-[70px] my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
+        <div className="flex justify-between flex-row md:w-[60%]  my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
           <div className="flex flex-col">
             <h2 className="font-semibold ">Pemeriksaan - 2</h2>
             <h4>
@@ -51,7 +51,7 @@ const AddPrenagcyData = () => {
           </Link>
         </div>
 
-        <div className="flex justify-between flex-row w-[60%] h-[70px] my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
+        <div className="flex justify-between flex-row md:w-[60%] my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
           <div className="flex flex-col">
             <h2 className="font-semibold ">Pemeriksaan - 1</h2>
             <h4>

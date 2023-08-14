@@ -4,6 +4,6 @@
 
 @layer utilities {
   .heading1 {
-    @apply text-[32px] font-semibold;
+    @apply font-semibold text-2xl text-black;
   }
 }

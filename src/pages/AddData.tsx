@@ -5,13 +5,13 @@ import MainLayout from "../layout/Mainlayout";
 const AddData = () => {
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px]">
-        <h1 className="font-semibold text-2xl text-black mb-[20px]">
+      <section className="ml-[20px] mt-[35px] mr-[20px]">
+        <h1 className="font-semibold text-2xl text-black mb-5">
           Cari Nama Orang Tua Untuk Menambahkan Data Hasil Pemeriksaan
         </h1>
 
-        <form>
-          <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+        <form className="mb-5">
+          <label className="mb-2 text-sm font-medium text-gray-900 sr-only ">
             Search
           </label>
           <div className="relative">
@@ -21,7 +21,7 @@ const AddData = () => {
             <input
               type="search"
               id="search"
-              className="block w-full p-4 pl-10 text-sm text-gray-900 border  border-border-grey rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block w-full text-clip p-4 pl-10 text-sm text-gray-900 border  border-border-grey rounded-lg bg-gray-50"
               placeholder="Cari Nama Lengkap Ibu Atau Ayah Dari Bayi Atau Anak Disini"
               required
             />
@@ -37,11 +37,16 @@ const AddData = () => {
         {[...Array(6)].map((_, index) => (
           <div
             key={index}
-            className="my-3 py-2 px-4  border border-border-grey rounded-lg flex flex-row justify-between"
+            className="my-3 py-2 px-4 border border-border-grey rounded-lg flex flex-col sm:flex-row justify-between items-center"
           >
-            <p>Nasrah Hayati Fitri / Muhammad Harizal Fikri</p>
+            <p className="mb-2 sm:mb-0 sm:mr-4">
+              Nasrah Hayati Fitri / Muhammad Harizal Fikri
+            </p>
             <Link to={"/parentProfile"}>
-              <button type="button" className="text-light-violet outline-none">
+              <button
+                type="button"
+                className="text-light-violet outline-none mt-2 sm:mt-0"
+              >
                 Lihat Profile
               </button>
             </Link>
@@ -51,4 +56,5 @@ const AddData = () => {
     </MainLayout>
   );
 };
+
 export default AddData;

@@ -101,18 +101,18 @@ const InputPrenagcyData = () => {
               />
             }
           />
-          <div className="flex flex-row my-8 w-full gap-4  items-center">
+          <div className="flex flex-col md:flex-row my-8 w-full gap-4  items-center">
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className=" w-[50%] h-[46px] bg-transparent  text-ms text-orange font-semibold py-2 px-4 border border-border-grey rounded-lg"
+              className=" w-full md:w-[50%] h-[46px] bg-transparent  text-ms text-orange font-semibold py-2 px-4 border border-border-grey rounded-lg"
             >
               Kembali
             </button>
 
             <button
               type="button"
-              className=" bg-orange  text-white  w-[50%] h-[46px] rounded-lg block text-ms font-semibold   "
+              className=" bg-orange  text-white w-full md:w-[50%] h-[46px] rounded-lg block text-ms font-semibold   "
             >
               Simpan Data
             </button>
