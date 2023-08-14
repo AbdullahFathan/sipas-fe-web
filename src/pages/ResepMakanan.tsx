@@ -1,4 +1,10 @@
+import MainLayout from "../layout/Mainlayout";
+
 const ResepMakanan = () => {
-  return <div className="text-orange text-2xl">ResepMakanan</div>;
+  return (
+    <MainLayout>
+      <div className="text-orange text-2xl">ResepMakanan</div>;
+    </MainLayout>
+  );
 };
 export default ResepMakanan;

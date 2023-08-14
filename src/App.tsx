@@ -8,17 +8,16 @@ import InputPrenagcyData from "./pages/InputPrenagcyData";
 import ChildData from "./pages/ChildData";
 import InputChildData from "./pages/InputChildData";
 import Login from "./pages/Login";
-
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import MainLayout from "./layout/Mainlayout";
+import PermintaanBantuan from "./pages/PermintaanBantuan";
+import Profil from "./pages/Profil";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/homePage" element={<MainLayout />} />
+        <Route path="/homePage" element={<Homepage />} />
 
         <Route path="/addData" element={<AddData />} />
         <Route path="/resepMakanan" element={<ResepMakanan />} />
@@ -28,6 +27,8 @@ function App() {
         <Route path="/inputPrenagcyData" element={<InputPrenagcyData />} />
         <Route path="/childData" element={<ChildData />} />
         <Route path="/inputChildData" element={<InputChildData />} />
+        <Route path="/permintaanBantuan" element={<PermintaanBantuan />} />
+        <Route path="/profil" element={<Profil />} />
       </Routes>
     </BrowserRouter>
   );

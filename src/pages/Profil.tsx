@@ -1,10 +1,10 @@
 import MainLayout from "../layout/Mainlayout";
 
-const WaGruop = () => {
+const Profil = () => {
   return (
     <MainLayout>
-      <div>WaGruop</div>;
+      <div>Profil</div>;
     </MainLayout>
   );
 };
-export default WaGruop;
+export default Profil;

@@ -1,10 +1,10 @@
 import MainLayout from "../layout/Mainlayout";
 
-const WaGruop = () => {
+const Homepage = () => {
   return (
     <MainLayout>
-      <div>WaGruop</div>;
+      <div>Homepage</div>;
     </MainLayout>
   );
 };
-export default WaGruop;
+export default Homepage;

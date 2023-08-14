@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { SidebarData } from "../constant/Sidebar";
 
 const Sidebar = () => {
   return (
@@ -12,70 +13,18 @@ const Sidebar = () => {
           Puskesmas Kota Lumut
         </p>
         <ul className="space-y-2 font-medium">
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
-            >
-              <span className="ml-3">Beranda</span>
-            </a>
-          </li>
-          <li>
-            <NavLink
-              to={"/addData"}
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">
-                Data Pemeriksaan
-              </span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/waGruop"}
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange   "
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">
-                Link Grup Wa
-              </span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/resepMakanan"}
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">
-                Resep Makanan
-              </span>
-            </NavLink>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange  "
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">
-                Permintaan Bantuan
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange"
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">Profile</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange"
-            >
-              <span className="flex-1 ml-3 whitespace-nowrap">Keluar</span>
-            </a>
-          </li>
+          {SidebarData.map((item) => (
+            <li key={item.id}>
+              <NavLink
+                to={item.path}
+                className="flex items-center p-2 text-gray-900 hover:text-white hover:bg-orange "
+              >
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  {item.title}
+                </span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </aside>
