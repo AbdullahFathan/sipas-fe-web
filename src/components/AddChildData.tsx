@@ -62,7 +62,7 @@ const AddChildData = () => {
 
       <div className="flex justify-between flex-row w-[60%] h-[70px] my-5 border border-border-grey border-solid rounded-lg py-4 px-6  ">
         <div className="flex flex-col">
-          <h2 className="font-semibold ">Pemeriksaan - 2</h2>
+          <h2 className="font-semibold ">Pemeriksaan - 1</h2>
           <h4>
             Status Gizi Anak: <span className="text-red">Beresiko</span>
           </h4>

@@ -1,6 +1,7 @@
 import Datepicker from "../components/Datepicker";
 import Dropdown from "../components/Dropdown";
 import FliedPrenaghcyInput from "../components/FliedPrenaghcyInput";
+import MainLayout from "../layout/Mainlayout";
 
 const options = ["Baik", "Lemah", "Beresiko"];
 
@@ -9,109 +10,111 @@ const InputChildData = () => {
     console.log(`Selected option: ${selectedOption}`);
   };
   return (
-    <section className="ml-[60px] mt-[35px] mr-[102px] w-full">
-      <h1 className="font-semibold text-4xl text-center">Data Anak Ke-1</h1>
-      <h2 className="font-semibold text-2xl mt-8">Detail Pemeriksaan</h2>
+    <MainLayout>
+      <section className="ml-[60px] mt-[35px] mr-[102px] ">
+        <h1 className="font-semibold text-4xl text-center">Data Anak Ke-1</h1>
+        <h2 className="font-semibold text-2xl mt-8">Detail Pemeriksaan</h2>
 
-      <form>
-        <FliedPrenaghcyInput
-          heading="Tanggal Pemeriksaan*"
-          subtext=" Pastikan Tanggal Yang Dimasukkan Sesuai Dengan Tanggal Pemeriksaan Yang Tertera Pada Laporan Hasil Pemeriksaan"
-          child={<Datepicker />}
-        />
+        <form>
+          <FliedPrenaghcyInput
+            heading="Tanggal Pemeriksaan*"
+            subtext=" Pastikan Tanggal Yang Dimasukkan Sesuai Dengan Tanggal Pemeriksaan Yang Tertera Pada Laporan Hasil Pemeriksaan"
+            child={<Datepicker />}
+          />
 
-        <FliedPrenaghcyInput
-          heading="Tempat Pemeriksaan*"
-          subtext="Pastikan Nama Tempat Pemeriksaan Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Masukkan Nama Tempat Ibu Memeriksakan Anaknya disini"
-            />
-          }
-        />
+          <FliedPrenaghcyInput
+            heading="Tempat Pemeriksaan*"
+            subtext="Pastikan Nama Tempat Pemeriksaan Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Masukkan Nama Tempat Ibu Memeriksakan Anaknya disini"
+              />
+            }
+          />
 
-        <FliedPrenaghcyInput
-          heading="Diperiksa Oleh*"
-          subtext="Pastikan Nama Pemeriksa Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Masukkan Nama Dokter Atau Tenaga Kesehatan Yang Memeriksakan Anak Disini"
-            />
-          }
-        />
+          <FliedPrenaghcyInput
+            heading="Diperiksa Oleh*"
+            subtext="Pastikan Nama Pemeriksa Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Masukkan Nama Dokter Atau Tenaga Kesehatan Yang Memeriksakan Anak Disini"
+              />
+            }
+          />
 
-        <h2 className="font-semibold text-2xl mt-8">Hasil Pemeriksaan</h2>
+          <h2 className="font-semibold text-2xl mt-8">Hasil Pemeriksaan</h2>
 
-        <FliedPrenaghcyInput
-          heading="Umur Anak*"
-          subtext="Pastikan Angka Usia Anak Yang Diinput Menggunakan Satuan Tahun"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Masukkan Usia Anak Disini"
-            />
-          }
-        />
-        <FliedPrenaghcyInput
-          heading="Tinggi Anak*"
-          subtext="Masukkan Tinggi Anak Disini"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Pastikan Tinggi Anak Yang Diinput Dalam Satuan cm"
-            />
-          }
-        />
-        <FliedPrenaghcyInput
-          heading="Berat Badan Anak*"
-          subtext="Pastikan Berat Badan Anak Yang Diinput Dalam Satuan kg"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Masukkan Berat Badan Anak Disini"
-            />
-          }
-        />
-        <FliedPrenaghcyInput
-          heading="Status Gizi Anak*"
-          subtext="Pilih Status Yang Tepat Sesuai Dengan Hasil Pemeriksaan Secara Keseluruhan Dari Anak"
-          child={<Dropdown options={options} onSelect={handleOptionSelect} />}
-        />
-        <FliedPrenaghcyInput
-          heading="Pesan Tambahan"
-          subtext="Masukkan Pesan Dari Hasil Pemeriksaan Yang Dilakukan Untuk Ibu & Anak Jika Ada"
-          child={
-            <input
-              type="text"
-              className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-              placeholder="Masukkan Pesan Tambahan Untuk Ibu & Anak Disini"
-            />
-          }
-        />
-        <div className="flex flex-row my-8 w-full gap-4  items-center">
-          <button
-            type="button"
-            className=" w-[50%] h-[46px] bg-transparent  text-ms text-orange font-semibold py-2 px-4 border border-border-grey rounded-lg"
-          >
-            Batalkan Simpan
-          </button>
+          <FliedPrenaghcyInput
+            heading="Umur Anak*"
+            subtext="Pastikan Angka Usia Anak Yang Diinput Menggunakan Satuan Tahun"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Masukkan Usia Anak Disini"
+              />
+            }
+          />
+          <FliedPrenaghcyInput
+            heading="Tinggi Anak*"
+            subtext="Masukkan Tinggi Anak Disini"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Pastikan Tinggi Anak Yang Diinput Dalam Satuan cm"
+              />
+            }
+          />
+          <FliedPrenaghcyInput
+            heading="Berat Badan Anak*"
+            subtext="Pastikan Berat Badan Anak Yang Diinput Dalam Satuan kg"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Masukkan Berat Badan Anak Disini"
+              />
+            }
+          />
+          <FliedPrenaghcyInput
+            heading="Status Gizi Anak*"
+            subtext="Pilih Status Yang Tepat Sesuai Dengan Hasil Pemeriksaan Secara Keseluruhan Dari Anak"
+            child={<Dropdown options={options} onSelect={handleOptionSelect} />}
+          />
+          <FliedPrenaghcyInput
+            heading="Pesan Tambahan"
+            subtext="Masukkan Pesan Dari Hasil Pemeriksaan Yang Dilakukan Untuk Ibu & Anak Jika Ada"
+            child={
+              <input
+                type="text"
+                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
+                placeholder="Masukkan Pesan Tambahan Untuk Ibu & Anak Disini"
+              />
+            }
+          />
+          <div className="flex flex-row my-8 w-full gap-4  items-center">
+            <button
+              type="button"
+              className=" w-[50%] h-[46px] bg-transparent  text-ms text-orange font-semibold py-2 px-4 border border-border-grey rounded-lg"
+            >
+              Batalkan Simpan
+            </button>
 
-          <button
-            type="button"
-            className=" bg-orange  text-white  w-[50%] h-[46px] rounded-lg block text-ms font-semibold   "
-          >
-            Simpan Data
-          </button>
-        </div>
-      </form>
-    </section>
+            <button
+              type="button"
+              className=" bg-orange  text-white  w-[50%] h-[46px] rounded-lg block text-ms font-semibold   "
+            >
+              Simpan Data
+            </button>
+          </div>
+        </form>
+      </section>
+    </MainLayout>
   );
 };
 export default InputChildData;

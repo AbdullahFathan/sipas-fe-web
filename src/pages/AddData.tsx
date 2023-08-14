@@ -34,28 +34,19 @@ const AddData = () => {
           </div>
         </form>
 
-        <div className="my-3 py-2 px-4  border border-border-grey rounded-lg flex flex-row justify-between">
-          <p>Nasrah Hayati Fitri / Muhammad Harizal Fikri</p>
-          <Link to={"/parentProfile"}>
-            <button type="button" className="text-light-violet outline-none">
-              Lihat Profile
-            </button>
-          </Link>
-        </div>
-
-        <div className="my-3 py-2 px-4  border border-border-grey rounded-lg flex flex-row justify-between">
-          <p>Nasrah Hayati Fitri / Muhammad Harizal Fikri</p>
-          <button type="button" className="text-light-violet outline-none">
-            Lihat Profile
-          </button>
-        </div>
-
-        <div className="my-3 py-2 px-4  border border-border-grey rounded-lg flex flex-row justify-between">
-          <p>Nasrah Hayati Fitri / Muhammad Harizal Fikri</p>
-          <button type="button" className="text-light-violet outline-none">
-            Lihat Profile
-          </button>
-        </div>
+        {[...Array(6)].map((_, index) => (
+          <div
+            key={index}
+            className="my-3 py-2 px-4  border border-border-grey rounded-lg flex flex-row justify-between"
+          >
+            <p>Nasrah Hayati Fitri / Muhammad Harizal Fikri</p>
+            <Link to={"/parentProfile"}>
+              <button type="button" className="text-light-violet outline-none">
+                Lihat Profile
+              </button>
+            </Link>
+          </div>
+        ))}
       </section>
     </MainLayout>
   );
