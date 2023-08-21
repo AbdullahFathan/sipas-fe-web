@@ -20,6 +20,8 @@ import DetailRecipes from "./pages/recipes and articel/DetailRecipes";
 import MenuArticel from "./pages/recipes and articel/MenuArticel";
 import AddArticel from "./pages/recipes and articel/AddArticel";
 import DetailArticel from "./pages/recipes and articel/DetailArticel";
+import ListHelp from "./pages/request help/ListHelp";
+import DetailHelp from "./pages/request help/DetailHelp";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route path="/childData" element={<ChildData />} />
         <Route path="/inputChildData" element={<InputChildData />} />
         <Route path="/permintaanBantuan" element={<PermintaanBantuan />} />
+        <Route path="/listHelp" element={<ListHelp />} />
+        <Route path="/detailHelp" element={<DetailHelp />} />
         <Route path="/profil" element={<Profil />} />
       </Routes>
     </BrowserRouter>
