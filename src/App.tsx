@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddData from "./pages/check up data/AddData";
-import ResepMakanan from "./pages/recipes and articel/ResepMakanan";
+import RecipesArticle from "./pages/recipes and articel/RecipesArticle";
 import WaGruop from "./pages/Wagroup/WaGruop";
 import ParentProfile from "./pages/check up data/ParentProfile";
 import PrenagcyData from "./pages/check up data/PrenagcyData";
@@ -14,6 +14,12 @@ import Homepage from "./pages/Homepage";
 import DetailWaGroup from "./pages/Wagroup/DetailWaGroup";
 import EditDetailGroup from "./pages/Wagroup/EditDetailGroup";
 import AddWaGroup from "./pages/Wagroup/AddWaGroup";
+import MenuRecipes from "./pages/recipes and articel/MenuRecipes";
+import AddRecipes from "./pages/recipes and articel/AddRecipes";
+import DetailRecipes from "./pages/recipes and articel/DetailRecipes";
+import MenuArticel from "./pages/recipes and articel/MenuArticel";
+import AddArticel from "./pages/recipes and articel/AddArticel";
+import DetailArticel from "./pages/recipes and articel/DetailArticel";
 
 function App() {
   return (
@@ -23,7 +29,13 @@ function App() {
         <Route path="/homePage" element={<Homepage />} />
 
         <Route path="/addData" element={<AddData />} />
-        <Route path="/resepMakanan" element={<ResepMakanan />} />
+        <Route path="/resepMakanan" element={<RecipesArticle />} />
+        <Route path="/menuRecipes" element={<MenuRecipes />} />
+        <Route path="/addRecipes" element={<AddRecipes />} />
+        <Route path="/detailRecipes" element={<DetailRecipes />} />
+        <Route path="/menuArticle" element={<MenuArticel />} />
+        <Route path="/addArticle" element={<AddArticel />} />
+        <Route path="/detailArticle" element={<DetailArticel />} />
         <Route path="/waGruop" element={<WaGruop />} />
         <Route path="/detailWaGruop" element={<DetailWaGroup />} />
         <Route path="/editDetailWaGruop" element={<EditDetailGroup />} />

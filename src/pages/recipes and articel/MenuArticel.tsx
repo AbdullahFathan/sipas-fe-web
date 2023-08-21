@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
-import SearchIcon from "../../assets/SearchIcon";
 import MainLayout from "../../layout/Mainlayout";
+import SearchIcon from "../../assets/SearchIcon";
 
-const AddData = () => {
+const MenuArticel = () => {
   return (
     <MainLayout>
       <section>
-        <h1 className="font-semibold text-2xl text-black mb-5">
-          Cari Nama Orang Tua Untuk Menambahkan Data Hasil Pemeriksaan
-        </h1>
+        <h1 className="font-semibold text-2xl text-black mb-5">Menu Artikel</h1>
+
+        <Link to={"/addArticle"} className="w-full">
+          <button
+            type="button"
+            className=" bg-orange  text-white my-5  rounded-lg block text-ms font-semibold w-full h-[46px]"
+          >
+            Upload Artikel Baru Disini
+          </button>
+        </Link>
 
         <form className="mb-5">
           <label className="mb-2 text-sm font-medium text-gray-900 sr-only ">
@@ -22,7 +29,7 @@ const AddData = () => {
               type="search"
               id="search"
               className="block w-full text-clip p-4 pl-10 text-sm text-gray-900 border  border-border-grey rounded-lg bg-gray-50"
-              placeholder="Cari Nama Lengkap Ibu Atau Ayah Dari Bayi Atau Anak Disini"
+              placeholder="Cari artikelmu yang telah kamu upload disini"
               required
             />
             <button
@@ -34,20 +41,20 @@ const AddData = () => {
           </div>
         </form>
 
-        {[...Array(6)].map((_, index) => (
+        {[...Array(3)].map((_, index) => (
           <div
             key={index}
             className="my-3 py-2 px-4 border border-border-grey rounded-lg flex flex-col sm:flex-row justify-between items-center"
           >
             <p className="mb-2 sm:mb-0 sm:mr-4">
-              Nasrah Hayati Fitri / Muhammad Harizal Fikri
+              Perhatian! Berikut 8 tanda-tanda gejala umum stunting pada anak
             </p>
-            <Link to={"/parentProfile"}>
+            <Link to={"/detailArticle"}>
               <button
                 type="button"
                 className="text-light-violet outline-none mt-2 sm:mt-0"
               >
-                Lihat Profile
+                Lihat Artikel
               </button>
             </Link>
           </div>
@@ -56,5 +63,4 @@ const AddData = () => {
     </MainLayout>
   );
 };
-
-export default AddData;
+export default MenuArticel;
