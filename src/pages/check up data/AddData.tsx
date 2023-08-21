@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import SearchIcon from "../assets/SearchIcon";
-import MainLayout from "../layout/Mainlayout";
+import SearchIcon from "../../assets/SearchIcon";
+import MainLayout from "../../layout/Mainlayout";
 
 const AddData = () => {
   return (

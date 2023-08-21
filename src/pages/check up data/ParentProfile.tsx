@@ -1,7 +1,7 @@
 import { useState } from "react";
-import AddPrenagcyData from "../components/AddPrenagcyData";
-import AddChildData from "../components/AddChildData";
-import MainLayout from "../layout/Mainlayout";
+import AddPrenagcyData from "../../components/AddPrenagcyData";
+import AddChildData from "../../components/AddChildData";
+import MainLayout from "../../layout/Mainlayout";
 
 const ParentProfile = () => {
   const [activeTab, setActiveTab] = useState("dataKehamilan");

@@ -1,7 +1,7 @@
-import Datepicker from "../components/Datepicker";
-import Dropdown from "../components/Dropdown";
-import FliedPrenaghcyInput from "../components/FliedPrenaghcyInput";
-import MainLayout from "../layout/Mainlayout";
+import Datepicker from "../../components/Datepicker";
+import Dropdown from "../../components/Dropdown";
+import FliedPrenaghcyInput from "../../components/FliedPrenaghcyInput";
+import MainLayout from "../../layout/Mainlayout";
 
 const options = ["Baik", "Lemah", "Beresiko"];
 

@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AddData from "./pages/AddData";
-import ResepMakanan from "./pages/ResepMakanan";
-import WaGruop from "./pages/WaGruop";
-import ParentProfile from "./pages/ParentProfile";
-import PrenagcyData from "./pages/PrenagcyData";
-import InputPrenagcyData from "./pages/InputPrenagcyData";
-import ChildData from "./pages/ChildData";
-import InputChildData from "./pages/InputChildData";
+import AddData from "./pages/check up data/AddData";
+import ResepMakanan from "./pages/recipes and articel/ResepMakanan";
+import WaGruop from "./pages/Wagroup/WaGruop";
+import ParentProfile from "./pages/check up data/ParentProfile";
+import PrenagcyData from "./pages/check up data/PrenagcyData";
+import InputPrenagcyData from "./pages/check up data/InputPrenagcyData";
+import ChildData from "./pages/check up data/ChildData";
+import InputChildData from "./pages/check up data/InputChildData";
 import Login from "./pages/Login";
-import PermintaanBantuan from "./pages/PermintaanBantuan";
-import Profil from "./pages/Profil";
+import PermintaanBantuan from "./pages/request help/PermintaanBantuan";
+import Profil from "./pages/profile/Profil";
 import Homepage from "./pages/Homepage";
 
 function App() {

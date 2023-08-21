@@ -1,4 +1,4 @@
-import MainLayout from "../layout/Mainlayout";
+import MainLayout from "../../layout/Mainlayout";
 
 const PermintaanBantuan = () => {
   return (

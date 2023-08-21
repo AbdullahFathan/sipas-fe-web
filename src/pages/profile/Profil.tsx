@@ -1,5 +1,5 @@
-import FliedPrenaghcyInput from "../components/FliedPrenaghcyInput";
-import MainLayout from "../layout/Mainlayout";
+import FliedPrenaghcyInput from "../../components/FliedPrenaghcyInput";
+import MainLayout from "../../layout/Mainlayout";
 
 const Profil = () => {
   return (

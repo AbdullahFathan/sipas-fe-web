@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MainLayout from "../layout/Mainlayout";
+import MainLayout from "../../layout/Mainlayout";
 
 const ResepMakanan = () => {
   return (
