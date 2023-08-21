@@ -4,9 +4,9 @@ import MainLayout from "../../layout/Mainlayout";
 const WaGruop = () => {
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px]">
+      <section>
         <h1 className="heading1 mb-5">List Link Grup Whatsapp</h1>
-        <Link to={"#"} className="w-full">
+        <Link to={"/addDetailWaGruop"} className="w-full">
           <button
             type="button"
             className=" bg-orange  text-white  rounded-lg block text-ms font-semibold w-full h-[46px]"
@@ -21,7 +21,7 @@ const WaGruop = () => {
             className="my-3 py-3 px-4  border border-border-grey rounded-lg flex flex-row justify-between"
           >
             <p>Grup Pengumuman Informasi Vaksin Puskesmas Lumut</p>
-            <Link to={"#"}>
+            <Link to={"/detailWaGruop"}>
               <button type="button" className="text-light-violet outline-none">
                 Lihat Detail
               </button>

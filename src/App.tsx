@@ -11,6 +11,9 @@ import Login from "./pages/Login";
 import PermintaanBantuan from "./pages/request help/PermintaanBantuan";
 import Profil from "./pages/profile/Profil";
 import Homepage from "./pages/Homepage";
+import DetailWaGroup from "./pages/Wagroup/DetailWaGroup";
+import EditDetailGroup from "./pages/Wagroup/EditDetailGroup";
+import AddWaGroup from "./pages/Wagroup/AddWaGroup";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/addData" element={<AddData />} />
         <Route path="/resepMakanan" element={<ResepMakanan />} />
         <Route path="/waGruop" element={<WaGruop />} />
+        <Route path="/detailWaGruop" element={<DetailWaGroup />} />
+        <Route path="/editDetailWaGruop" element={<EditDetailGroup />} />
+        <Route path="/addDetailWaGruop" element={<AddWaGroup />} />
         <Route path="/parentProfile" element={<ParentProfile />} />
         <Route path="/prenagcyData" element={<PrenagcyData />} />
         <Route path="/inputPrenagcyData" element={<InputPrenagcyData />} />

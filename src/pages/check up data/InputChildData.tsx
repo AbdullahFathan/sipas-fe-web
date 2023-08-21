@@ -1,6 +1,7 @@
 import Datepicker from "../../components/Datepicker";
 import Dropdown from "../../components/Dropdown";
 import FliedPrenaghcyInput from "../../components/FliedPrenaghcyInput";
+import InputFlied from "../../components/InputFlied";
 import MainLayout from "../../layout/Mainlayout";
 
 const options = ["Baik", "Lemah", "Beresiko"];
@@ -11,7 +12,7 @@ const InputChildData = () => {
   };
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px] ">
+      <section>
         <h1 className="font-semibold text-4xl text-center">Data Anak Ke-1</h1>
         <h2 className="font-semibold text-2xl mt-8">Detail Pemeriksaan</h2>
 
@@ -26,11 +27,7 @@ const InputChildData = () => {
             heading="Tempat Pemeriksaan*"
             subtext="Pastikan Nama Tempat Pemeriksaan Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
             child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Masukkan Nama Tempat Ibu Memeriksakan Anaknya disini"
-              />
+              <InputFlied placeHolder="Masukkan Nama Tempat Ibu Memeriksakan Anaknya disini" />
             }
           />
 
@@ -38,11 +35,7 @@ const InputChildData = () => {
             heading="Diperiksa Oleh*"
             subtext="Pastikan Nama Pemeriksa Sesuai Dengan Hasil Laporan Yang Dikirim Oleh Orang Tua"
             child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Masukkan Nama Dokter Atau Tenaga Kesehatan Yang Memeriksakan Anak Disini"
-              />
+              <InputFlied placeHolder="Masukkan Nama Dokter Atau Tenaga Kesehatan Yang Memeriksakan Anak Disini" />
             }
           />
 
@@ -51,34 +44,20 @@ const InputChildData = () => {
           <FliedPrenaghcyInput
             heading="Umur Anak*"
             subtext="Pastikan Angka Usia Anak Yang Diinput Menggunakan Satuan Tahun"
-            child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Masukkan Usia Anak Disini"
-              />
-            }
+            child={<InputFlied placeHolder="Masukkan Usia Anak Disini" />}
           />
           <FliedPrenaghcyInput
             heading="Tinggi Anak*"
             subtext="Masukkan Tinggi Anak Disini"
             child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Pastikan Tinggi Anak Yang Diinput Dalam Satuan cm"
-              />
+              <InputFlied placeHolder="Pastikan Tinggi Anak Yang Diinput Dalam Satuan cm" />
             }
           />
           <FliedPrenaghcyInput
             heading="Berat Badan Anak*"
             subtext="Pastikan Berat Badan Anak Yang Diinput Dalam Satuan kg"
             child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Masukkan Berat Badan Anak Disini"
-              />
+              <InputFlied placeHolder="Masukkan Berat Badan Anak Disini" />
             }
           />
           <FliedPrenaghcyInput
@@ -90,11 +69,7 @@ const InputChildData = () => {
             heading="Pesan Tambahan"
             subtext="Masukkan Pesan Dari Hasil Pemeriksaan Yang Dilakukan Untuk Ibu & Anak Jika Ada"
             child={
-              <input
-                type="text"
-                className="w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10"
-                placeholder="Masukkan Pesan Tambahan Untuk Ibu & Anak Disini"
-              />
+              <InputFlied placeHolder="Masukkan Pesan Tambahan Untuk Ibu & Anak Disini" />
             }
           />
           <div className="flex flex-row my-8 w-full gap-4  items-center">

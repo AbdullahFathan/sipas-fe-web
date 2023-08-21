@@ -12,7 +12,7 @@ const ParentProfile = () => {
 
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px]  overflow-y-hidden">
+      <section className="overflow-y-hidden">
         {/* Heading Page */}
         <div>
           <h1 className="font-semibold text-2xl">Profil Orang Tua</h1>

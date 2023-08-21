@@ -13,7 +13,7 @@ const InputPrenagcyData = () => {
   };
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px] ">
+      <section>
         <h1 className="font-semibold text-4xl text-center">Data Kehamilan</h1>
         <h2 className="font-semibold text-2xl mt-8">Detail Pemeriksaan</h2>
 

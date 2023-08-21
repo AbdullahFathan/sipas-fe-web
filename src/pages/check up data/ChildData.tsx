@@ -5,7 +5,7 @@ const ChildData = () => {
   const navigate = useNavigate();
   return (
     <MainLayout>
-      <section className="ml-[60px] mt-[35px] mr-[102px] ">
+      <section>
         <h1 className="font-semibold text-4xl text-center">Data Anak Ke-1</h1>
 
         <div className="mt-8">
