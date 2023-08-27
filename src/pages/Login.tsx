@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import InputFlied from "../components/InputFlied";
+import axios from "axios";
 
 interface FormUser {
   email: string;
@@ -8,6 +10,7 @@ interface FormUser {
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isWrong, setIsWrong] = useState<boolean>(false);
   const [formUser, setFormUser] = useState<FormUser>({
     email: "",
     password: "",
@@ -21,12 +24,24 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Here you can perform your login logic using formUser.email and formUser.password
-    console.log("Logging in with:", formUser.email, formUser.password);
 
-    navigate("/homePage");
+    try {
+      const res = await axios.post(
+        "https://sipas-8de63a58cb4f.herokuapp.com/faskes/login",
+        {
+          email: formUser.email,
+          password: formUser.password,
+        }
+      );
+
+      if (res.status === 201) {
+        navigate("/homePage");
+      }
+    } catch (error) {
+      setIsWrong(true);
+    }
   };
 
   return (
@@ -45,14 +60,10 @@ const Login = () => {
               <label htmlFor="email" className="block mb-2">
                 Email<span className="text-dark-orange">*</span>
               </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
+              <InputFlied
                 value={formUser.email}
-                onChange={handleInputChange}
-                placeholder="Masukkan alamat email anda disini"
-                className="w-full px-3 py-2 border rounded border-border-grey"
+                onChangeValue={handleInputChange}
+                name="email"
               />
             </div>
             {/* Password Field */}
@@ -60,14 +71,10 @@ const Login = () => {
               <label htmlFor="password" className="block mb-2">
                 Password<span className="text-dark-orange">*</span>
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
+              <InputFlied
                 value={formUser.password}
-                onChange={handleInputChange}
-                placeholder="Masukkan kata sandi anda disini"
-                className="w-full px-3 py-2 border rounded border-border-grey"
+                onChangeValue={handleInputChange}
+                name="password"
               />
             </div>
             <button
@@ -77,6 +84,20 @@ const Login = () => {
               Masuk
             </button>
           </form>
+
+          {/*Wrong message */}
+          {isWrong ? (
+            <p className="text-center text-red font-semibold my-3">
+              Email atau Password Anda Salah
+            </p>
+          ) : null}
+
+          <p className="text-center font-normal mt-6 text-sm">
+            Belum Punya Akun?{" "}
+            <Link to={"/register"}>
+              <span className="text-light-violet">Daftar Sekarang</span>
+            </Link>
+          </p>
         </div>
       </div>
     </main>

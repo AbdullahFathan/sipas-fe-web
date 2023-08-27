@@ -22,12 +22,14 @@ import AddArticel from "./pages/recipes and articel/AddArticel";
 import DetailArticel from "./pages/recipes and articel/DetailArticel";
 import ListHelp from "./pages/request help/ListHelp";
 import DetailHelp from "./pages/request help/DetailHelp";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/homePage" element={<Homepage />} />
 
         <Route path="/addData" element={<AddData />} />
