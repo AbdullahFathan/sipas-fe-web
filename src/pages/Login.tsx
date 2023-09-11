@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputFlied from "../components/InputFlied";
-import axios from "axios";
+import Loader from "../components/Loader";
+import { useFetch } from "../hooks/useFetch";
 
 interface FormUser {
   email: string;
@@ -24,37 +25,44 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const [isLoading, data, error, formSubmit, isSuccess] = useFetch({
+    method: "POST",
+    url: "/faskes/login",
+    data: formUser,
+  });
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    try {
-      const res = await axios.post(
-        "https://sipas-8de63a58cb4f.herokuapp.com/faskes/login",
-        {
-          email: formUser.email,
-          password: formUser.password,
-        }
-      );
-
-      if (res.status === 201) {
-        navigate("/homePage");
-      }
-    } catch (error) {
-      setIsWrong(true);
-    }
+    formSubmit();
   };
 
+  const handleLoginSuccess = () => {
+    localStorage.setItem("user", JSON.stringify(data));
+
+    navigate("/homePage");
+  };
+
+  if (isSuccess) {
+    handleLoginSuccess();
+  }
+
+  useEffect(() => {
+    if (Object.keys(error).length !== 0) {
+      setIsWrong(true);
+    }
+  }, [error]);
+
   return (
-    <main className="bg-violet h-screen flex items-center justify-center">
-      <div className="flex items-center justify-center flex-col md:flex-row gap-20">
-        <p className="text-white text-[40px]">
+    <main className="bg-violet h-screen flex items-center justify-center overflow-y-hidden">
+      <div className="flex items-center justify-center flex-col md:flex-row gap-6 md:gap-20  ">
+        <p className="text-white text-[40px] text-center md:text-start ">
           Selamat Datang Admin <br /> Layanan Kesehatan
         </p>
 
         {/* User Form */}
         <div className="bg-white py-16 px-14 w-[400px] md:w-[500px]">
           <p className="font-semibold mb-8 text-xl">Log in Akunmu Disini</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(event) => handleFormSubmit(event)}>
             {/* Email Field */}
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2">
@@ -80,8 +88,9 @@ const Login = () => {
             <button
               type="submit"
               className="bg-orange text-white  w-full block px-6 py-4 rounded-lg"
+              disabled={isLoading}
             >
-              Masuk
+              {isLoading ? <Loader /> : "Masuk"}
             </button>
           </form>
 

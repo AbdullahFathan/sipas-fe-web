@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputFlied from "../components/InputFlied";
-import axios from "axios";
+import { useFetch } from "../hooks/useFetch";
+import Loader from "../components/Loader";
 
 interface FormUser {
   namaFaskes: string;
   email: string;
   password: string;
-  alamatFaskes: string;
+  alamatFasilitas: string;
   nomorTelepon: string;
 }
 
@@ -17,7 +18,7 @@ const Register = () => {
     namaFaskes: "",
     email: "",
     password: "",
-    alamatFaskes: "",
+    alamatFasilitas: "",
     nomorTelepon: "",
   });
 
@@ -27,39 +28,32 @@ const Register = () => {
     setFormUser({ ...formUser, [name]: value });
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const [isLoading, data, error, formSubmit, isSuccess] = useFetch({
+    method: "POST",
+    url: "/faskes",
+    data: formUser,
+  });
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    try {
-      const res = await axios.post(
-        "https://sipas-8de63a58cb4f.herokuapp.com/faskes",
-        {
-          namaFaskes: formUser.namaFaskes,
-          email: formUser.email,
-          password: formUser.password,
-          alamatFasilitas: formUser.alamatFaskes,
-          nomorTelepon: formUser.nomorTelepon,
-        }
-      );
-
-      if (res.status === 201) {
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    formSubmit();
   };
+
+  if (isSuccess) {
+    navigate("/");
+  }
+
   return (
     <main className="bg-violet h-screen flex items-center justify-center">
-      <section className="flex items-center justify-center  flex-col md:flex-row gap-20">
-        <p className="text-white text-[40px]">Registrasi Akun</p>
+      <section className="flex items-center justify-center  flex-col md:flex-row gap-4 md:gap-20 overflow-y-hidden ">
+        <p className="text-white text-[40px] mt-9 md:mt-0">Registrasi Akun</p>
 
         {/* User Form */}
-        <div className="bg-white py-8 px-14 w-[400px] md:w-[500px]">
-          <form onSubmit={handleSubmit}>
+        <div className="bg-white mt-4 py-5 px-14 w-[400px] md:w-[500px]">
+          <form onSubmit={(event) => handleFormSubmit(event)}>
             {/* NameFaskes Field */}
             <div className="mb-4">
-              <label htmlFor="password" className="block mb-2">
+              <label htmlFor="namaFaskes" className="block mb-2">
                 Nama Faskes<span className="text-dark-orange">*</span>
               </label>
               <InputFlied
@@ -90,20 +84,20 @@ const Register = () => {
                 name="password"
               />
             </div>
-            {/* Alamat Faskes Field */}
+            {/* Alamat Fasilitas Field */}
             <div className="mb-4">
-              <label htmlFor="password" className="block mb-2">
-                Alamat Faskes<span className="text-dark-orange">*</span>
+              <label htmlFor="alamatFasilitas" className="block mb-2">
+                Alamat Fasilitas<span className="text-dark-orange">*</span>
               </label>
               <InputFlied
-                value={formUser.alamatFaskes}
+                value={formUser.alamatFasilitas}
                 onChangeValue={handleInputChange}
-                name="alamatFaskes"
+                name="alamatFasilitas"
               />
             </div>
             {/* No Telepon Faskes Field */}
             <div className="mb-4">
-              <label htmlFor="password" className="block mb-2">
+              <label htmlFor="nomorTelepon" className="block mb-2">
                 No Telepon Faskes<span className="text-dark-orange">*</span>
               </label>
               <InputFlied
@@ -115,11 +109,12 @@ const Register = () => {
             <button
               type="submit"
               className="bg-orange text-white  w-full block px-6 py-4 rounded-lg"
+              disabled={isLoading}
             >
-              Masuk
+              {isLoading ? <Loader /> : "Masuk"}
             </button>
           </form>
-          <p className="text-center font-normal mt-6 text-sm">
+          <p className="text-center font-normal my-6 text-sm">
             Sudah Punya Akun?{" "}
             <Link to={"/"}>
               <span className="text-light-violet">Login Sekarang</span>
