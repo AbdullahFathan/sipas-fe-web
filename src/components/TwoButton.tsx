@@ -1,13 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
 
+type ButtonType = "button" | "submit" | "reset";
+
 interface TwoButtonProps {
   textButton1: string;
   textButton2: string;
-  route: string;
+  route?: string;
+  typeButton?: ButtonType;
+  onTapFunc?: () => void;
 }
 
-const TwoButton = ({ textButton1, textButton2, route }: TwoButtonProps) => {
+const TwoButton = ({
+  textButton1,
+  textButton2,
+  route,
+  typeButton,
+  onTapFunc,
+}: TwoButtonProps) => {
   const navigate = useNavigate();
+
   return (
     <div className="flex flex-col md:flex-row my-8 w-full gap-4  items-center">
       <button
@@ -16,9 +27,9 @@ const TwoButton = ({ textButton1, textButton2, route }: TwoButtonProps) => {
       >
         {textButton1}
       </button>
-      <Link to={route} className=" w-full md:w-[50%] h-[46px]">
+      <Link to={route ?? "#"} className=" w-full md:w-[50%] h-[46px]">
         <button
-          type="button"
+          type={typeButton}
           className=" bg-orange  text-white  rounded-lg block text-ms font-semibold w-full h-full  "
         >
           {textButton2}
