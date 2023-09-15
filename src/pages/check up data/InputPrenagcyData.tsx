@@ -88,7 +88,13 @@ const InputPrenagcyData = () => {
           <FliedPrenaghcyInput
             heading="Status Kehamilan*"
             subtext="Pilih Status Yang Tepat Sesuai Dengan Hasil Pemeriksaan Secara Keseluruhan Dari Ibu & Bayi"
-            child={<Dropdown options={options} onSelect={handleOptionSelect} />}
+            child={
+              <Dropdown
+                options={options}
+                onSelect={handleOptionSelect}
+                name="status_kehamilan"
+              />
+            }
           />
           <FliedPrenaghcyInput
             heading="Pesan Tambahan"

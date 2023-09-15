@@ -1,26 +1,33 @@
 import React, { useState } from "react";
+import { RecipesModel } from "../constant/recipes";
 
 interface DropdownProps {
-  options: string[];
-  onSelect: (selectedOption: string) => void;
+  options: (string | RecipesModel)[];
+  onSelect: (selectedOption: string, name: string) => void;
+  name: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
+const Dropdown: React.FC<DropdownProps> = ({ options, onSelect, name }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-  const handleOptionSelect = (option: string) => {
-    setSelectedOption(option);
-    onSelect(option);
+  const handleOptionSelect = (option: string | RecipesModel) => {
+    if (typeof option === "string") {
+      setSelectedOption(option);
+      onSelect(option, name);
+    } else {
+      setSelectedOption(option.value);
+      onSelect(option.id, name);
+    }
     setIsOpen(false);
   };
 
   return (
-    <div className=" inline-block text-left w-full relative p-2 border border-border-grey rounded-md mt-2  pr-10">
+    <div className="inline-block text-left w-full relative p-2 border border-border-grey rounded-md mt-2 pr-10">
       <div>
         <button
           type="button"
-          className="inline-flex justify-between w-full rounded-md  shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+          className="inline-flex justify-between w-full rounded-md shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           onClick={() => setIsOpen(!isOpen)}
         >
           {selectedOption || "Select an option"}
@@ -40,21 +47,21 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
         </button>
       </div>
       {isOpen && (
-        <div className="origin-top-right w-full absolute left-0 mt-2 z-50  rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right w-full absolute left-0 mt-2 z-50 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
-            {options.map((option) => (
+            {options.map((option, index) => (
               <button
-                key={option}
+                key={index}
                 onClick={() => handleOptionSelect(option)}
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                 role="menuitem"
               >
-                {option}
+                {typeof option === "string" ? option : option.value}
               </button>
             ))}
           </div>

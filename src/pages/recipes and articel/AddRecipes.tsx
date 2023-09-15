@@ -88,7 +88,7 @@ const AddRecipes = () => {
   return (
     <MainLayout>
       <section className="w-full">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form id="recipes_form" onSubmit={(e) => handleSubmit(e)}>
           <h1 className="heading1 text-center">Upload Resep Makanan Baru</h1>
           <h2 className="heading1 mt-8 mb-4">Detail Resep</h2>
           <FliedPrenaghcyInput
@@ -212,6 +212,7 @@ const AddRecipes = () => {
             textButton1="Batalkan Simpan"
             textButton2="Upload Resep"
             typeButton="submit"
+            idForm="recipes_form"
           />
         </form>
       </section>

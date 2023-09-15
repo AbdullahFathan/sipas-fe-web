@@ -8,7 +8,7 @@ const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <nav className=" w-full z-50  px-3 bg-neutral-white sticky top-0 flex justify-between items-center">
-      <div className=" ml-[100px]  py-3 lg:px-5 lg:pl-3">
+      <div className=" ml-4 md:ml-[100px]  py-3 lg:px-5 lg:pl-3">
         <Logo />
       </div>
       {/*Sidebar Mobile */}

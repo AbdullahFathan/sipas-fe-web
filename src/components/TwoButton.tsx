@@ -7,6 +7,7 @@ interface TwoButtonProps {
   textButton2: string;
   route?: string;
   typeButton?: ButtonType;
+  idForm?: string;
   onTapFunc?: () => void;
 }
 
@@ -15,6 +16,7 @@ const TwoButton = ({
   textButton2,
   route,
   typeButton,
+  idForm,
   onTapFunc,
 }: TwoButtonProps) => {
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ const TwoButton = ({
       <Link to={route ?? "#"} className=" w-full md:w-[50%] h-[46px]">
         <button
           type={typeButton}
+          form={idForm}
           className=" bg-orange  text-white  rounded-lg block text-ms font-semibold w-full h-full  "
         >
           {textButton2}

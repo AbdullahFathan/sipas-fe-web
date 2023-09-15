@@ -63,7 +63,13 @@ const InputChildData = () => {
           <FliedPrenaghcyInput
             heading="Status Gizi Anak*"
             subtext="Pilih Status Yang Tepat Sesuai Dengan Hasil Pemeriksaan Secara Keseluruhan Dari Anak"
-            child={<Dropdown options={options} onSelect={handleOptionSelect} />}
+            child={
+              <Dropdown
+                options={options}
+                onSelect={handleOptionSelect}
+                name="gizi_anak"
+              />
+            }
           />
           <FliedPrenaghcyInput
             heading="Pesan Tambahan"
