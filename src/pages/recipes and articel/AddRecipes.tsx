@@ -12,6 +12,8 @@ import {
   optionsRecipesTimeMade,
 } from "../../constant/recipes";
 import { useFetch } from "../../hooks/useFetch";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import { useNavigate } from "react-router-dom";
 
 interface formRecipesType {
   judulResep: string;
@@ -26,6 +28,7 @@ interface formRecipesType {
 }
 
 const AddRecipes = () => {
+  const navigate = useNavigate();
   const [formRecipes, setFormRecipes] = useState<formRecipesType>({
     judulResep: "",
     targetResep: "",
@@ -39,21 +42,25 @@ const AddRecipes = () => {
   });
   const [file, setFile] = useState<File>();
 
-  const user = localStorage.getItem("user");
-  const dataJson = JSON.parse(user!);
+  const [userData] = useLocalStorage("user");
 
-  const [isLoading, data, error, formSubmit, isSuccess] = useFetch({
-    method: "POST",
-    url: "/resep/makanan",
-    data: {
-      image: file?.stream(),
-      dto: formRecipes,
+  // consume Api
+  const [isLoading, data, error, formSubmit, isSuccess] = useFetch(
+    {
+      method: "POST",
+      url: "/resep/makanan",
+      data: {
+        image: file,
+        dto: formRecipes,
+      },
+      headers: {
+        Authorization: `Bearer ${userData.jwtToken} `,
+        "Content-Type": "multipart/form-data",
+      },
     },
-    headers: {
-      Authorization: `Bearer ${dataJson.jwtToken} `,
-      "Content-Type": "multipart/form-data",
-    },
-  });
+    false,
+    true
+  );
 
   //handle drowndowm select
   const handleOptionSelect = (selectedOption: string, name: string) => {
@@ -84,7 +91,13 @@ const AddRecipes = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formRecipes);
+    formSubmit();
   };
+
+  if (isSuccess) {
+    navigate("/homePage");
+  }
+
   return (
     <MainLayout>
       <section className="w-full">
@@ -185,6 +198,7 @@ const AddRecipes = () => {
               placeholder="Tuliskan Bahan Yang Perlu Disiapkan Disini"
               onChange={(e) => handleInputChange(e)}
               name="bahanText"
+              required
             />
           </div>
           <div className=" w-[70%]">
@@ -195,6 +209,7 @@ const AddRecipes = () => {
               placeholder="Tuliskan Cara/Langkah Untuk Membuatnya Disini"
               onChange={(e) => handleInputChange(e)}
               name="caraMembuatText"
+              required
             />
           </div>
           <div className=" w-[70%]">
@@ -205,6 +220,7 @@ const AddRecipes = () => {
               placeholder="Tuliskan Detail Informasi Dari Nilai Gizi Yang Terkandung Pada Resepnya Disini"
               onChange={(e) => handleInputChange(e)}
               name="nilaiGiziText"
+              required
             />
           </div>
 
@@ -213,6 +229,8 @@ const AddRecipes = () => {
             textButton2="Upload Resep"
             typeButton="submit"
             idForm="recipes_form"
+            route="/homepage"
+            isLoading={isLoading}
           />
         </form>
       </section>

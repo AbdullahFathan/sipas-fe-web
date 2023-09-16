@@ -5,7 +5,8 @@ axios.defaults.baseURL = "https://sipas-8de63a58cb4f.herokuapp.com";
 
 export const useFetch = <T>(
   config: AxiosRequestConfig<any>,
-  isNotSubmit: boolean = false
+  isNotSubmit: boolean = false,
+  isFormData: boolean = false
 ): [boolean, T | undefined, object, () => void, boolean] => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState({});
@@ -17,6 +18,18 @@ export const useFetch = <T>(
 
     return;
   }, []);
+
+  if (isFormData) {
+    const formData = new FormData();
+    const json = JSON.stringify(config.data["dto"]);
+    const blob = new Blob([json], {
+      type: "application/json",
+    });
+    formData.append("image", config.data["image"]);
+    formData.append("dto", blob);
+
+    config.data = formData;
+  }
 
   const sendRequest = async () => {
     setIsLoading(true);
@@ -39,6 +52,5 @@ export const useFetch = <T>(
   const formSubmit: () => void = () => {
     sendRequest();
   };
-
   return [isLoading, data, error, formSubmit, isSuccess];
 };
