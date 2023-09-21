@@ -5,14 +5,15 @@ import InputFlied from "../../components/InputFlied";
 import TwoButton from "../../components/TwoButton";
 import MainLayout from "../../layout/Mainlayout";
 import {
-  optionsRecipesAge,
+  optionsRecipesAgeBaby,
+  optionsRecipesAgeMoms,
   optionsRecipesFor,
   optionsRecipesMade,
   optionsRecipesTime,
   optionsRecipesTimeMade,
 } from "../../constant/recipes";
 import { useFetch } from "../../hooks/useFetch";
-import useLocalStorage from "../../hooks/useLocalStorage";
+
 import { useNavigate } from "react-router-dom";
 
 interface formRecipesType {
@@ -42,7 +43,7 @@ const AddRecipes = () => {
   });
   const [file, setFile] = useState<File>();
 
-  const [userData] = useLocalStorage("user");
+  const recepiesFor = formRecipes.targetResep === "orang_tua";
 
   // consume Api
   const [isLoading, data, error, formSubmit, isSuccess] = useFetch(
@@ -54,7 +55,6 @@ const AddRecipes = () => {
         dto: formRecipes,
       },
       headers: {
-        Authorization: `Bearer ${userData.jwtToken} `,
         "Content-Type": "multipart/form-data",
       },
     },
@@ -148,7 +148,9 @@ const AddRecipes = () => {
             subtext=" "
             child={
               <Dropdown
-                options={optionsRecipesAge}
+                options={
+                  recepiesFor ? optionsRecipesAgeMoms : optionsRecipesAgeBaby
+                }
                 onSelect={handleOptionSelect}
                 name="targetUsiaResep"
               />

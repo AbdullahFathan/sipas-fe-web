@@ -8,10 +8,17 @@ export const optionsRecipesFor: RecipesModel[] = [
   { id: "bayi_anak", value: "Bayi & Anak" },
 ];
 
-export const optionsRecipesAge: RecipesModel[] = [
+export const optionsRecipesAgeMoms: RecipesModel[] = [
   { id: "trimester_1", value: "Trisemester 1" },
   { id: "trimester_2", value: "Trisemester 2" },
   { id: "trimester_3", value: "Trisemester 3" },
+];
+export const optionsRecipesAgeBaby: RecipesModel[] = [
+  { id: "0_3_bulan", value: "0 - 3 Bulan" },
+  { id: "3_6_bulan", value: "3 - 6 Bulan" },
+  { id: "6_12_bulan", value: "6 - 12 Bulan" },
+  { id: "1_tahun", value: "1 Tahun" },
+  { id: "2_tahun", value: "2 Tahun" },
 ];
 export const optionsRecipesTime: RecipesModel[] = [
   { id: "sarapan", value: "Sarapan" },
