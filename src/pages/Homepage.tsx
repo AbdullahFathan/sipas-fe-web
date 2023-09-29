@@ -3,15 +3,18 @@ import {
   HomepageDataPrenangcy,
   HomepageDataUmum,
 } from "../constant/homepage";
+import useLocalStorage from "../hooks/useLocalStorage";
 import MainLayout from "../layout/Mainlayout";
 
 const Homepage = () => {
+  const [userData] = useLocalStorage("user");
   return (
     <MainLayout>
       <section>
         <h1 className="heading1 mb-5">Selamat Datang Di DashBoard Admin</h1>
         <h3 className="text-2xl font-medium">
-          Kode Unikmu : <span className="text-light-violet">1234567890</span>
+          Kode Unikmu :{" "}
+          <span className="text-light-violet">{userData.data.kodeUnik}</span>
         </h3>
         {/*Common Data */}
         <h2 className="heading1 mt-10 mb-2">Dashboard Umum</h2>

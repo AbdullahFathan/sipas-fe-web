@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { SidebarData } from "../constant/Sidebar";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const Sidebar = () => {
+  const [userData] = useLocalStorage("user");
   return (
     <aside
       id="logo-sidebar"
@@ -10,7 +12,7 @@ const Sidebar = () => {
     >
       <div className="h-full px-3 pb-4 overflow-y-autobg-neutral-white">
         <p className=" ml-3 mt-3 p-2 mb-10 text-xl font-semibold">
-          Puskesmas Kota Lumut
+          Puskesmas {userData.data.username}
         </p>
         <ul className="space-y-2 font-medium">
           {SidebarData.map((item) => (

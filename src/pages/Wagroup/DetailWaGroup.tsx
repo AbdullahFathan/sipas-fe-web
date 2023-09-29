@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MainLayout from "../../layout/Mainlayout";
 import { useState } from "react";
 import PopModal from "../../components/PopUp";
 
+interface DetailWaGroupProps {
+  id: number;
+  namaGrup: string;
+  linkGrup: string;
+}
+
 const DetailWaGroup = () => {
+  const location = useLocation();
+  const data = location.state?.grup as DetailWaGroupProps;
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleDeleteClick = () => {
@@ -17,8 +25,8 @@ const DetailWaGroup = () => {
     setIsOpen(false);
   };
 
-  const valueText1 = "Grup Pengumuman Informasi Vaksin Puskesmas Lumut";
-  const valueText2 = "https://www.whatsapp.com";
+  const valueText1 = data.namaGrup;
+  const valueText2 = data.linkGrup;
 
   return (
     <MainLayout>
@@ -26,10 +34,10 @@ const DetailWaGroup = () => {
         <h1 className="heading1  text-center">Detail Grup</h1>
         <div className="my-8">
           <p className="font-medium text-xl text-black mb-4">
-            Nama Grup Whatsapp: Grup Pengumuman Informasi Vaksin Puskesmas Lumut
+            Nama Grup Whatsapp: {valueText1}
           </p>
           <p className="font-medium text-xl text-black mb-4">
-            Link Grup Whatsapp: https://www.whatsapp.com
+            Link Grup Whatsapp: {valueText2}
           </p>
           <p className="font-medium text-xl text-black ">
             Diinput Pada Tanggal: 10 April 2023

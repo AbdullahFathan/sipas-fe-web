@@ -1,7 +1,30 @@
 import { Link } from "react-router-dom";
 import MainLayout from "../../layout/Mainlayout";
+import { useFetch } from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
+
+interface GrupData {
+  id: number;
+  namaGrup: string;
+  linkGrup: string;
+}
 
 const WaGruop = () => {
+  let listGrup: GrupData[] = [];
+  const [isLoading, data, , , isSuccess] = useFetch<{
+    data: GrupData[];
+  }>(
+    {
+      method: "GET",
+      url: "/whatsapp/faskes?limit=10&page=0",
+    },
+    true
+  );
+
+  if (isSuccess) {
+    listGrup = data?.data || [];
+  }
+
   return (
     <MainLayout>
       <section>
@@ -9,19 +32,20 @@ const WaGruop = () => {
         <Link to={"/addDetailWaGruop"} className="w-full">
           <button
             type="button"
-            className=" bg-orange  text-white  rounded-lg block text-ms font-semibold w-full h-[46px]"
+            disabled={isLoading}
+            className="bg-orange text-white rounded-lg block text-ms font-semibold w-full h-[46px]"
           >
-            Tambahkan Link Grup Whatsapp
+            {isLoading ? <Loader /> : "Tambahkan Link Grup Whatsapp"}
           </button>
         </Link>
 
-        {[...Array(2)].map((_, index) => (
+        {listGrup.map((item, index) => (
           <div
             key={index}
-            className="my-3 py-3 px-4  border border-border-grey rounded-lg flex flex-row justify-between"
+            className="my-3 py-3 px-4 border border-border-grey rounded-lg flex flex-row justify-between"
           >
-            <p>Grup Pengumuman Informasi Vaksin Puskesmas Lumut</p>
-            <Link to={"/detailWaGruop"}>
+            <p>{item.namaGrup}</p>
+            <Link to={"/detailWaGruop"} state={{ grup: item }}>
               <button type="button" className="text-light-violet outline-none">
                 Lihat Detail
               </button>
@@ -32,4 +56,5 @@ const WaGruop = () => {
     </MainLayout>
   );
 };
+
 export default WaGruop;

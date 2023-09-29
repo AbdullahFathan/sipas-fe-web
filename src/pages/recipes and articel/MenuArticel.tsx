@@ -1,8 +1,33 @@
 import { Link } from "react-router-dom";
 import MainLayout from "../../layout/Mainlayout";
 import SearchIcon from "../../assets/SearchIcon";
+import { useFetch } from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
+
+interface ArtikelData {
+  id: number;
+  publicId: string;
+  linkGambar: string;
+  judulArtikel: string;
+  peninjau: string;
+  isiText: string;
+}
 
 const MenuArticel = () => {
+  let listArticel: ArtikelData[] = [];
+  const [isLoading, data, , , isSuccess] = useFetch<{
+    data: ArtikelData[];
+  }>(
+    {
+      method: "GET",
+      url: "/artikel/faskes/list?limit=10&page=0",
+    },
+    true
+  );
+
+  if (isSuccess) {
+    listArticel = data?.data || [];
+  }
   return (
     <MainLayout>
       <section>
@@ -13,7 +38,7 @@ const MenuArticel = () => {
             type="button"
             className=" bg-orange  text-white my-5  rounded-lg block text-ms font-semibold w-full h-[46px]"
           >
-            Upload Artikel Baru Disini
+            {isLoading ? <Loader /> : "Upload Artikel Baru Disini"}
           </button>
         </Link>
 
@@ -41,15 +66,13 @@ const MenuArticel = () => {
           </div>
         </form>
 
-        {[...Array(3)].map((_, index) => (
+        {listArticel.map((item, index) => (
           <div
             key={index}
             className="my-3 py-2 px-4 border border-border-grey rounded-lg flex flex-col sm:flex-row justify-between items-center"
           >
-            <p className="mb-2 sm:mb-0 sm:mr-4">
-              Perhatian! Berikut 8 tanda-tanda gejala umum stunting pada anak
-            </p>
-            <Link to={"/detailArticle"}>
+            <p className="mb-2 sm:mb-0 sm:mr-4">{item.judulArtikel}</p>
+            <Link to={"/detailArticle"} state={{ artikel: item }}>
               <button
                 type="button"
                 className="text-light-violet outline-none mt-2 sm:mt-0"
