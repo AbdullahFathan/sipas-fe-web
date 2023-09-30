@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import MainLayout from "../../layout/Mainlayout";
 import { useFetch } from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 interface GrupData {
   id: number;
@@ -11,12 +12,16 @@ interface GrupData {
 
 const WaGruop = () => {
   let listGrup: GrupData[] = [];
+  const [userData] = useLocalStorage("user");
   const [isLoading, data, , , isSuccess] = useFetch<{
     data: GrupData[];
   }>(
     {
       method: "GET",
       url: "/whatsapp/faskes?limit=10&page=0",
+      headers: {
+        Authorization: `Bearer ${userData.jwtToken} `,
+      },
     },
     true
   );

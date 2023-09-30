@@ -3,6 +3,7 @@ import MainLayout from "../../layout/Mainlayout";
 import SearchIcon from "../../assets/SearchIcon";
 import { useFetch } from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 interface ArtikelData {
   id: number;
@@ -15,12 +16,16 @@ interface ArtikelData {
 
 const MenuArticel = () => {
   let listArticel: ArtikelData[] = [];
+  const [userData] = useLocalStorage("user");
   const [isLoading, data, , , isSuccess] = useFetch<{
     data: ArtikelData[];
   }>(
     {
       method: "GET",
       url: "/artikel/faskes/list?limit=10&page=0",
+      headers: {
+        Authorization: `Bearer ${userData.jwtToken} `,
+      },
     },
     true
   );

@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { useState, useEffect } from "react";
-import useLocalStorage from "./useLocalStorage";
 
 axios.defaults.baseURL = "https://sipas-8de63a58cb4f.herokuapp.com";
 
@@ -13,10 +12,6 @@ export const useFetch = <T>(
   const [error, setError] = useState({});
   const [data, setData] = useState<T>();
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [userData] = useLocalStorage("user");
-  axios.defaults.headers.common[
-    "Authorization"
-  ] = `Bearer ${userData.jwtToken} `;
 
   useEffect(() => {
     if (isNotSubmit) sendRequest();

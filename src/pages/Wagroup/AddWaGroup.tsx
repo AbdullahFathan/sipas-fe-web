@@ -5,6 +5,7 @@ import TwoButton from "../../components/TwoButton";
 import MainLayout from "../../layout/Mainlayout";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AddWaGroup = () => {
   const navigator = useNavigate();
@@ -12,12 +13,16 @@ const AddWaGroup = () => {
     namaGrup: "",
     linkGrupWhatsapp: "",
   });
+  const [userData] = useLocalStorage("user");
 
   // consume api
   const [isLoading, data, error, formSubmit, isSuccess] = useFetch({
     method: "POST",
     url: "/whatsapp",
     data: formAddWa,
+    headers: {
+      Authorization: `Bearer ${userData.jwtToken} `,
+    },
   });
 
   //handle input flied change

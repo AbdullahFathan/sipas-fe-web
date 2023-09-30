@@ -15,6 +15,7 @@ import {
 import { useFetch } from "../../hooks/useFetch";
 
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 interface formRecipesType {
   judulResep: string;
@@ -42,6 +43,7 @@ const AddRecipes = () => {
     nilaiGiziText: "",
   });
   const [file, setFile] = useState<File>();
+  const [userData] = useLocalStorage("user");
 
   const recepiesFor = formRecipes.targetResep === "orang_tua";
 
@@ -56,6 +58,7 @@ const AddRecipes = () => {
       },
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${userData.jwtToken} `,
       },
     },
     false,

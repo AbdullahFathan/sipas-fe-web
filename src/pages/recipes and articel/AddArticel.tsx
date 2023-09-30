@@ -5,10 +5,13 @@ import TwoButton from "../../components/TwoButton";
 import MainLayout from "../../layout/Mainlayout";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 const AddArticel = () => {
   const navigator = useNavigate();
   const [file, setFile] = useState<File>();
+
+  const [userData] = useLocalStorage("user");
 
   const [formArticel, setFormArticel] = useState({
     judulArtikel: "string",
@@ -45,6 +48,8 @@ const AddArticel = () => {
       },
       headers: {
         "Content-Type": "multipart/form-data",
+
+        Authorization: `Bearer ${userData.jwtToken} `,
       },
     },
     false,
